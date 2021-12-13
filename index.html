@@ -40,15 +40,18 @@
 <script>
      let t1 = document.getElementById('t1');
         let c1 = JSON.parse(localStorage.getItem('aksh'));
+          if (c1.length != 0){
+
         let k = ""
         for (let i = 0; i < c1.length; i++) {
             k += ` <tr>
-                        <th scope="row">${i + 1}</th>
-                        <td>${c1[i][0]}</td>
-                        <td>${c1[i][1]}</td>
-                    </tr>`;
+                            <th scope="row">${i + 1}</th>
+                            <td>${c1[i][0]}</td>
+                            <td>${c1[i][1]}</td>
+                        </tr>`;
         }
         t1.innerHTML = k;
+    }
     // let c1 = JSON.parse(localStorage.getItem('aksh'));
     document.getElementById('su1').addEventListener('click', (e) => {
         e.preventDefault();
