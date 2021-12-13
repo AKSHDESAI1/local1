@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+
+        <input type="text" id="a1" required>
+        <input type="text" id="a2" required>
+        <input type="submit" id="su1">
+    </form>
+
+    <table class="table" id="t1">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr> -->
+
+        </tbody>
+    </table>
+</body>
+<script>
+     let t1 = document.getElementById('t1');
+        let c1 = JSON.parse(localStorage.getItem('aksh'));
+        let k = ""
+        for (let i = 0; i < c1.length; i++) {
+            k += ` <tr>
+                        <th scope="row">${i + 1}</th>
+                        <td>${c1[i][0]}</td>
+                        <td>${c1[i][1]}</td>
+                    </tr>`;
+        }
+        t1.innerHTML = k;
+    // let c1 = JSON.parse(localStorage.getItem('aksh'));
+    document.getElementById('su1').addEventListener('click', (e) => {
+        e.preventDefault();
+        let a1 = document.getElementById('a1').value;
+        let a2 = document.getElementById('a2').value;
+        if (localStorage.length == 0) {
+
+            // let ar1 = [];
+            let a3 = [[a1, a2]];
+            // ar1.push(a3);
+
+            localStorage.setItem('aksh', JSON.stringify(a3));
+        }
+        else {
+
+            let b1 = localStorage.getItem('aksh');
+            b2 = JSON.parse(b1);
+            // let ar1 = b2;
+            // ar1.push(b2);
+            console.log(b2);
+            let a3 = [a1, a2];
+            // ar1.push(b2);
+            b2.push(a3);
+
+            localStorage.setItem('aksh', JSON.stringify(b2));
+        }
+
+        let t1 = document.getElementById('t1');
+        let c1 = JSON.parse(localStorage.getItem('aksh'));
+        let k = ""
+        for (let i = 0; i < c1.length; i++) {
+            k += ` <tr>
+                        <th scope="row">${i + 1}</th>
+                        <td>${c1[i][0]}</td>
+                        <td>${c1[i][1]}</td>
+                    </tr>`;
+        }
+        t1.innerHTML = k;
+    })
+
+
+
+</script>
+
+</html>
